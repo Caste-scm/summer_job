@@ -1,0 +1,62 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        int N = 3;
+        int[][] matrix = new int[N][N];
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < N;i++){
+            for (int j = 0;j < N;j++){
+                System.out.print("INSERT THE NUMBER:");
+                int num = scanner.nextInt();
+                matrix[i][j] = num;
+            }
+        }
+        System.out.println("THE MATRIX:");
+        for (int i = 0; i < N;i++){
+            for (int j = 0;j < N;j++){
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+        int sumC1 = 0;
+        int sumC2 = 0;
+        int sumC3 = 0;
+        int sumR1 = 0;
+        int sumR2 = 0;
+        int sumR3 = 0;
+
+        for (int i = 0; i < N;i++){
+            sumC1 = sumC1 + matrix[i][0];
+            sumC2 = sumC2 + matrix[i][1];
+            sumC3 = sumC3 + matrix[i][2];
+        }
+
+        for (int j = 0; j < N;j++){
+            sumR1 = sumR1 + matrix[0][j];
+            sumR2 = sumR2 + matrix[1][j];
+            sumR3 = sumR3 + matrix[2][j];
+        }
+
+        int sumD1 = 0;
+        for (int i = 0; i < N;i++){
+            for (int j = 0;j < N;j++){
+                if(i == j){
+                    sumD1 = sumD1 + matrix[i][j];
+                }
+            }
+        }
+
+        int sumD2 = 0;
+        for (int i = 0; i < N;i++){
+            sumD2 = sumD2 + matrix[i][matrix.length -1-i];
+        }
+
+        if(sumC1 == sumR1 && sumC2 == sumR1 && sumC3 == sumR1 &&
+                sumR2 == sumR1 && sumR3 == sumR1 &&
+                sumD1 == sumR1 && sumD2 == sumR1){
+            System.out.println("It's a MAGIC SQUARE.");
+        }else{
+            System.out.println("It's NOT a MAGIC SQUARE.");
+        }
+    }
+}
